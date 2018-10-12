@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 
 class Article extends PureComponent {
 	constructor(props) {
@@ -9,12 +9,6 @@ class Article extends PureComponent {
 			count: 0
 		}
 	}
-
-	/*
-	shouldComponentUpdate(nextProps, nextState) {
-		return this.state.isOpen !== nextState.isOpen
-	}
-	*/
 
 	componentWillMount() {
 		console.log('mounting')

@@ -1,27 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 
-class Article extends Component {
+class Article extends PureComponent {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			isOpen: props.defaultOpen
+			isOpen: props.defaultOpen,
+			count: 0
 		}
 	}
+
+	/*
+	shouldComponentUpdate(nextProps, nextState) {
+		return this.state.isOpen !== nextState.isOpen
+	}
+	*/
 
 	componentWillMount() {
 		console.log('mounting')
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log('will receive props')
 		if (nextProps.defaultOpen !== this.props.defaultOpen) this.setState({ 
 			isOpen: nextProps.defaultOpen 
 		})
 	}
 
 	componentWillUpdate() {
-		console.log('wiil update')
+		console.log('will update')
 	}
 
 	render() {
@@ -31,8 +37,9 @@ class Article extends Component {
 		return (
 			<div className='card mx-auto' style={style}>
 				<div className='card-header'>
-					<h2>
+					<h2 onClick={this.clickCounter}>
 						{article.title}
+						clicked {this.state.count}
 						<button className='btn btn-primary float-right' onClick={this.handleClick}>
 							{this.state.isOpen ? 'Close' : 'Open'}
 						</button>
@@ -46,6 +53,12 @@ class Article extends Component {
 				</div>
 			</div>
 		)
+	}
+
+	clickCounter = () => {
+		this.setState({
+			count: this.state.count + 1
+		})
 	}
 
 	handleClick = () => {

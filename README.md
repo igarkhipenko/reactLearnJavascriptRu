@@ -1,3 +1,3 @@
 # React screencast from learn-javascript.ru
 
-Повторение - мать учения  (с)
+Повторение - мать учения (с)

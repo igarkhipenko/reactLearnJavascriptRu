@@ -6,7 +6,6 @@ class Article extends Component {
 	}
 
 	handleClick = () => {
-		console.log('clicked')
 		this.setState({
 			isOpen: !this.state.isOpen
 		})
@@ -15,7 +14,6 @@ class Article extends Component {
 	render() {
 		const { article } = this.props
 		const body = this.state.isOpen && <section>{article.text}</section>
-		console.log('props', this.props)
 		return (
 			<div>
 				<h2>
